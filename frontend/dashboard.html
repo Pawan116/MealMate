@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MealMate — My Meals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span>🍽️</span>
+      <strong>MealMate</strong>
+    </div>
+    <div class="nav-right">
+      <span class="nav-name" id="navName">Loading…</span>
+      <button class="btn-logout" onclick="logout()">Sign out</button>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="page-main">
+
+    <div class="page-header">
+      <div class="date-pill">📅 <span id="todayDate">Today</span></div>
+      <h2>What are you eating today?</h2>
+      <p>Select your meals for the day and save before the cutoff time.</p>
+    </div>
+
+    <!-- Status banner -->
+    <div class="status-banner" id="statusBanner">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Loading today's meals…</span>
+    </div>
+
+    <!-- Meal cards -->
+    <div class="meals-grid">
+      <div class="meal-card" id="card-breakfast" onclick="toggleMeal('breakfast')">
+        <div class="check-ring"></div>
+        <span class="meal-emoji">🌅</span>
+        <div class="meal-name">Breakfast</div>
+        <div class="meal-time">7:00 – 9:00 AM</div>
+      </div>
+      <div class="meal-card" id="card-lunch" onclick="toggleMeal('lunch')">
+        <div class="check-ring"></div>
+        <span class="meal-emoji">☀️</span>
+        <div class="meal-name">Lunch</div>
+        <div class="meal-time">12:30 – 2:00 PM</div>
+      </div>
+      <div class="meal-card" id="card-dinner" onclick="toggleMeal('dinner')">
+        <div class="check-ring"></div>
+        <span class="meal-emoji">🌙</span>
+        <div class="meal-name">Dinner</div>
+        <div class="meal-time">7:30 – 9:30 PM</div>
+      </div>
+    </div>
+
+    <!-- Going home -->
+    <div class="going-home-card" id="goingHomeCard" onclick="toggleGoingHome()">
+      <span class="gh-icon">🏠</span>
+      <div class="gh-text">
+        <strong>Going Home</strong>
+        <span>Skip all meals — I won't be at the hostel today</span>
+      </div>
+      <div class="gh-badge">Selected</div>
+    </div>
+
+    <!-- Save button -->
+    <button class="btn-save" id="saveBtn" onclick="saveMeals()">Save Meal Preferences</button>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

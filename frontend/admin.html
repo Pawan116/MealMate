@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MealMate — Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span>🍽️</span>
+      <strong>MealMate</strong>
+    </div>
+    <div class="nav-right">
+      <span class="admin-badge">Admin</span>
+      <button class="btn-add-student" onclick="openModal()">
+        <span class="plus">+</span> Add Student
+      </button>
+      <button class="btn-refresh" id="refreshBtn" onclick="loadAll()">
+        <span class="refresh-icon">↻</span> Refresh
+      </button>
+      <button class="btn-logout" onclick="logout()">Sign out</button>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="admin-main">
+
+    <div class="page-header-admin">
+      <div>
+        <h2>Today's Meal Overview</h2>
+        <p id="todayDate">Loading…</p>
+      </div>
+      <div class="last-updated">Last updated: <span id="lastUpdated">—</span></div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="stats-grid">
+      <div class="stat-card accent">
+        <span class="stat-icon">👥</span>
+        <div class="stat-label">Total Responses</div>
+        <div class="stat-value" id="statTotal">—</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🌅</span>
+        <div class="stat-label">Breakfast</div>
+        <div class="stat-value" id="statBreakfast">—</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">☀️</span>
+        <div class="stat-label">Lunch</div>
+        <div class="stat-value" id="statLunch">—</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🌙</span>
+        <div class="stat-label">Dinner</div>
+        <div class="stat-value" id="statDinner">—</div>
+      </div>
+    </div>
+
+    <!-- Student meal table -->
+    <div class="table-section">
+      <div class="table-header">
+        <div>
+          <h3>Student Meal Details</h3>
+          <p>Who's eating what today</p>
+        </div>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search student…" oninput="filterTable(this.value)" id="searchInput"/>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="mealTableBody">
+          <tr class="loading-row"><td colspan="5">Loading meal data…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Add Student Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Add New Student</h3>
+          <p>Student can log in immediately after being added</p>
+        </div>
+        <div class="modal-close" onclick="closeModal()">✕</div>
+      </div>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="newName" placeholder="Rahul Sharma"/>
+      </div>
+      <div class="role-note">
+        <span>🆔</span>
+        <span>Student ID will be generated automatically</span>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="newPassword" placeholder="Temporary password (min. 6 chars)"/>
+      </div>
+
+      <div class="role-note">
+        <span>🎓</span>
+        <span>Role is set to <strong>Student</strong> automatically</span>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-submit" id="submitBtn" onclick="handleAddStudent()">Add Student</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MealMate — Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page-login">
+
+  <div class="page-layout">
+
+    <!-- Left branding panel -->
+    <div class="left-panel">
+      <div class="brand">
+        <div class="brand-icon">🍽️</div>
+        <h1>MealMate</h1>
+        <p>Your hostel's smart meal tracking system. Mark your meals, plan your day.</p>
+      </div>
+      <div class="features">
+        <div class="feature-item"><div class="feature-dot"></div><span>Mark breakfast, lunch & dinner daily</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Going home? Skip meals in one tap</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Admins see real-time meal counts</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Full per-student meal visibility</span></div>
+      </div>
+    </div>
+
+    <!-- Right login form -->
+    <div class="right-panel">
+  <div class="form-title">Welcome back 👋</div>
+  <div class="form-sub">Sign in to your MealMate account</div>
+
+  <!-- Role Switch -->
+  <div class="role-switch">
+    <button type="button" class="role-btn active">👨‍🎓 Student</button>
+    <button type="button" class="role-btn" id="adminRoleBtn" onclick="goToAdmin()">🧑‍💼 Admin</button>
+  </div>
+
+  <div class="input-group">
+    <label>Student ID</label>
+    <input type="text" id="studentId" placeholder="Enter your Student ID"/>
+  </div>
+
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="loginPassword" placeholder="••••••••"/>
+  </div>
+
+  <!-- Forgot password -->
+  <div class="forgot-password">
+    <span onclick="forgotPassword()">Forgot Password?</span>
+  </div>
+
+  <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Sign In</button>
+
+  <div class="login-footer">
+    <p>Don't have an account? Contact your hostel admin.</p>
+  </div>
+</div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/auth.js"></script>
+  
+  <!-- Forgot Password Modal -->
+<div class="modal-overlay" id="resetModal" onclick="closeResetModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3>Reset Password</h3>
+        <p>Enter your Student ID and new password</p>
+      </div>
+      <div class="modal-close" onclick="closeResetModal()">✕</div>
+    </div>
+
+    <div class="input-group">
+      <label>Student ID</label>
+      <input type="text" id="resetStudentId" placeholder="Enter your Student ID"/>
+    </div>
+
+    <div class="input-group">
+      <label>New Password</label>
+      <input type="password" id="resetPassword" placeholder="Enter new password"/>
+    </div>
+
+    <div class="input-group">
+      <label>Confirm Password</label>
+      <input type="password" id="resetConfirmPassword" placeholder="Confirm password"/>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeResetModal()">Cancel</button>
+      <button class="btn-submit" id="resetBtn" onclick="handleResetPassword()">Reset Password</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
