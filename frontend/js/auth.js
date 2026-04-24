@@ -2,7 +2,7 @@
    auth.js — Login page logic
    ============================================================ */
 
-const API = 'http://localhost:8000/api';
+const API = 'https://mealmate-aei2.onrender.com/api';
 
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');

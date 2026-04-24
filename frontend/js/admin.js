@@ -2,7 +2,7 @@
    admin.js — FINAL CLEAN VERSION
    ============================================================ */
 
-const API = 'http://localhost:8000/api';
+const API = 'https://mealmate-aei2.onrender.com/api';
 const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
